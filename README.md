@@ -25,15 +25,11 @@
 
 ### 运行效果
 
-![输入图片说明](src/assets/effectScreenshot/image.png)
-
-![输入图片说明](src/assets/effectScreenshot/image.png)
-
-![输入图片说明](src/assets/effectScreenshot/image.png)
-
-![输入图片说明](src/assets/effectScreenshot/image.png)
-
-![输入图片说明](src/assets/effectScreenshot/image.png)
+![输入图片说明](src/assets/effectScreenshot/login.png)
+![输入图片说明](src/assets/effectScreenshot/home.png)
+![输入图片说明](src/assets/effectScreenshot/dataList.png)
+![输入图片说明](src/assets/effectScreenshot/delData.png)
+![输入图片说明](src/assets/effectScreenshot/addData.png)
 
 ## Project setup
 
