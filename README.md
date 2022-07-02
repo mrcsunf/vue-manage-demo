@@ -25,17 +25,15 @@
 
 ### 运行效果
 
-![image-20220702190130068](C:\Users\ChenC\AppData\Roaming\Typora\typora-user-images\image-20220702190130068.png)
+![输入图片说明](src/assets/effectScreenshot/image.png)
 
-![image-20220702190214401](C:\Users\ChenC\AppData\Roaming\Typora\typora-user-images\image-20220702190214401.png)
+![输入图片说明](src/assets/effectScreenshot/image.png)
 
-![image-20220702190234375](C:\Users\ChenC\AppData\Roaming\Typora\typora-user-images\image-20220702190234375.png)
+![输入图片说明](src/assets/effectScreenshot/image.png)
 
-![image-20220702190306118](C:\Users\ChenC\AppData\Roaming\Typora\typora-user-images\image-20220702190306118.png)
+![输入图片说明](src/assets/effectScreenshot/image.png)
 
-![image-20220702190333021](C:\Users\ChenC\AppData\Roaming\Typora\typora-user-images\image-20220702190333021.png)
-
-
+![输入图片说明](src/assets/effectScreenshot/image.png)
 
 ## Project setup
 
