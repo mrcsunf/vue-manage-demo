@@ -25,11 +25,16 @@
 
 ### 运行效果
 
-![输入图片说明](src/assets/effectScreenshot/login.png)
-![输入图片说明](src/assets/effectScreenshot/home.png)
-![输入图片说明](src/assets/effectScreenshot/dataList.png)
-![输入图片说明](src/assets/effectScreenshot/delData.png)
-![输入图片说明](src/assets/effectScreenshot/addData.png)
+![image](https://user-images.githubusercontent.com/63433608/176999380-71deed4f-4cc6-49db-80dc-cd528ead3a32.png)
+
+![image](https://user-images.githubusercontent.com/63433608/176999396-8fd04f64-93c7-46ab-8d42-684c99a1d4f6.png)
+
+![image](https://user-images.githubusercontent.com/63433608/176999409-5543369f-bfa6-456f-988a-791e7288661d.png)
+
+![image](https://user-images.githubusercontent.com/63433608/176999415-5bffe79b-ed00-445b-bd96-255ab81b5a67.png)
+
+![image](https://user-images.githubusercontent.com/63433608/176999421-721f34ea-e62a-4e6e-9c69-a448a8b95784.png)
+
 
 ## Project setup
 
