@@ -16,7 +16,9 @@
           </el-input>
         </el-col>
         <el-col :span="4">
-          <el-button type="primary">添加用户</el-button>
+          <el-button type="primary" @click="addDialogVisiable = true"
+            >添加用户</el-button
+          >
         </el-col>
       </el-row>
       <!-- 用户列表区 -->
@@ -57,6 +59,7 @@
               type="danger"
               icon="el-icon-delete"
               size="mini"
+              @click="delUser"
             ></el-button>
           </el-tooltip>
           <!-- 分配角色按钮 -->
@@ -86,6 +89,38 @@
       >
       </el-pagination>
     </el-card>
+
+    <!-- 添加用户的对话框 -->
+    <el-dialog
+      title="提示"
+      :visible.sync="addDialogVisiable"
+      width="50%"
+      @close="addDialogCloesd"
+    >
+      <el-form
+        :model="addForm"
+        :rules="addFormRules"
+        ref="addFormRef"
+        label-width="70px"
+      >
+        <el-form-item label="用户名" prop="username">
+          <el-input v-model="addForm.username"></el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="password">
+          <el-input v-model="addForm.password" type="password"></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱" prop="email">
+          <el-input v-model="addForm.email"></el-input>
+        </el-form-item>
+        <el-form-item label="手机" prop="tel">
+          <el-input v-model="addForm.tel"></el-input>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="addDialogVisiable = false">取 消</el-button>
+        <el-button type="primary" @click="addUser">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -93,6 +128,29 @@
 export default {
   name: "",
   data() {
+    // 验证邮箱的规则
+    var checkEmail = (rule, value, cb) => {
+      // 验证邮箱的正则表达式
+      const regEmail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
+      if (regEmail.test(value)) {
+        // 合法的邮箱
+        return cb();
+      }
+      cb(new Error("请输入合法的邮箱"));
+    };
+    // 验证手机号的规则
+    var checkTel = (rule, value, cb) => {
+      // 验证手机号的正则表达式
+      // 匹配手机号码的正则表达式：/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/
+      // /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
+      const regTel = /^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
+
+      if (regTel.test(value)) {
+        // 合法的手机号
+        return cb();
+      }
+      cb(new Error("请输入合法的手机号"));
+    };
     return {
       query: "",
       // 当前页数
@@ -154,6 +212,44 @@ export default {
       ],
       //当前页码的表格数据
       tableData: [],
+      // 用户对话框的显示与隐藏
+      addDialogVisiable: false,
+      // 添加用户的表单数据
+      addForm: {
+        username: "",
+        password: "",
+        email: "",
+        tel: "",
+      },
+      // 添加表单的验证规则对象
+      addFormRules: {
+        username: [
+          { required: true, message: "请输入用户名", trigger: "blur" },
+          {
+            min: 3,
+            max: 10,
+            message: "用户名在3~10个字符之间",
+            trigger: "blur",
+          },
+        ],
+        password: [
+          { required: true, message: "请输入密码", trigger: "blur" },
+          {
+            min: 6,
+            max: 18,
+            message: "密码在6~18个字符之间",
+            trigger: "blur",
+          },
+        ],
+        email: [
+          { required: true, message: "请输入邮箱", trigger: "blur" },
+          { validator: checkEmail, trigger: "blur" },
+        ],
+        tel: [
+          { required: true, message: "请输入电话", trigger: "blur" },
+          { validator: checkTel, trigger: "blur" },
+        ],
+      },
     };
   },
   methods: {
@@ -201,6 +297,38 @@ export default {
       // console.log(result);
       //输出新数组
       return result;
+    },
+    // 删除方法
+    delUser() {
+      this.$confirm("此操作将永久删除该数据, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          this.$message({
+            type: "success",
+            message: "删除成功!",
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
+        });
+    },
+    // 监听添加用户对话框的关闭事件
+    addDialogCloesd() {
+      this.$refs.addFormRef.resetFields();
+    },
+    // 添加用户
+    addUser() {
+      this.$refs.addFormRef.validate((valid) => {
+        if (!valid) return;
+        console.log(valid);
+        // 验证通过，发起网络请求
+      });
     },
   },
   created() {
